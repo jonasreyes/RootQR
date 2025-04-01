@@ -1,0 +1,47 @@
+[project]
+name = "RootQR"
+version = "0.1.0"
+description = " Generador de códigos QR con Python y Flet"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    { name = "Jonás Antonio Reyes Casanova", email = "jonasreyes@yandex.com" }
+]
+dependencies = [
+  "flet==0.27.6"
+]
+
+[tool.flet]
+# org name in reverse domain name notation, e.g. "com.mycompany".
+# Combined with project.name to build bundle ID for iOS and Android apps
+org = "com.codevip"
+
+# project display name that is used as an app title on Android and iOS home screens,
+# shown in window titles and about app dialogs on desktop.
+product = "RootQR"
+
+# company name to display in about app dialogs
+company = "CodeVip"
+
+# copyright text to display in about app dialogs
+copyright = "Copyright (C) 2025 @JonasRoot"
+
+[tool.flet.app]
+path = "src"
+
+[tool.uv]
+dev-dependencies = [
+    "flet[all]",
+]
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.9"
+flet = "0.27.6"
+qrcode = "^7.4.2"
+pillow = "^10.0.0"
+
+[tool.poetry.group.dev.dependencies]
+flet = {extras = ["all"], version = "0.27.6"}
