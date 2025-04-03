@@ -4,7 +4,7 @@
 
 ![Logo de RootQR](src/assets/icon.png)
 
-**RootQR** es una aplicación desarrollada en Python con Flet para generar códigos QR personalizados, diseñada especialmente para Canaima GNU/Linux.
+**RootQR** es una aplicación desarrollada en Python con Flet para generar códigos QR personalizados, compatible 100% con Canaima GNU/Linux.
 
 ## 📂 Estructura de instalación
 
@@ -60,4 +60,4 @@ Distribuido bajo la **GNU GPLv3**. Ver [LICENSE](LICENSE) para más detalles.
 **Repositorio oficial**: [github.com/jonasreyes/rootqr](https://github.com/jonasreyes/rootqr.git)  
 **Contacto**: [t.me/jonasroot](https://t.me/jonasroot)
 
-*Una herramienta venezolana para la comunidad de software libre*
+*Una herramienta venezolana para la comunidad de #PatriaYSoftwareLibre*
