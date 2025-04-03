@@ -1,81 +1,59 @@
-# QrGenerator app
+# RootQR - Generador de códigos QR para Canaima GNU/Linux
 
-## Run the app
+![Logo de RootQR](src/assets/icon.png)
 
-### uv
+**RootQR** es una aplicación sencilla pero potente para generar códigos QR personalizados, desarrollada en Python con Flet. Diseñada específicamente para Canaima GNU/Linux, forma parte de un conjunto de herramientas de autoría nacional para la comunidad de software libre.
 
-Run as a desktop app:
+## ✨ Características principales
 
-```
-uv run flet run
-```
+- Generación de códigos QR con logotipos incrustrados
+- Personalización básica de colores del QR
+- Interfaz intuitiva y fácil de usar
+- Almacenamiento local de códigos generados
+- 100% software libre bajo licencia GPLv3
 
-Run as a web app:
+## 🚀 Instalación
 
-```
-uv run flet run --web
-```
+Para instalar RootQR en tu sistema Canaima GNU/Linux:
 
-### Poetry
-
-Install dependencies from `pyproject.toml`:
-
-```
-poetry install
+```bash
+wget https://raw.githubusercontent.com/jonasreyes/rootqr/main/install_rootqr.sh
+chmod +x install_rootqr.sh
+./install_rootqr.sh
 ```
 
-Run as a desktop app:
+## 🗑️ Desinstalación
 
-```
-poetry run flet run
-```
+Para eliminar RootQR de tu sistema:
 
-Run as a web app:
-
-```
-poetry run flet run --web
+```bash
+wget https://raw.githubusercontent.com/jonasreyes/rootqr/main/uninstall_rootqr.sh
+chmod +x uninstall_rootqr.sh
+./uninstall_rootqr.sh
 ```
 
-For more details on running the app, refer to the [Getting Started Guide](https://flet.dev/docs/getting-started/).
-
-## Build the app
-
-### Android
+## 📦 Estructura del proyecto
 
 ```
-flet build apk -v
+RootQR/
+├── install_rootqr.sh    # Script de instalación
+├── LICENSE              # Licencia GPLv3
+├── pyproject.toml       # Configuración del proyecto
+├── src/                 # Código fuente
+│   ├── assets/          # Recursos gráficos
+│   ├── database/        # Base de datos SQLite
+│   └── main.py          # Aplicación principal
+└── uninstall_rootqr.sh  # Script de desinstalación
 ```
 
-For more details on building and signing `.apk` or `.aab`, refer to the [Android Packaging Guide](https://flet.dev/docs/publish/android/).
+## 📄 Licencia
 
-### iOS
+RootQR se distribuye bajo la **GNU General Public License v3.0**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
 
-```
-flet build ipa -v
-```
+## 🤝 Contribuciones
 
-For more details on building and signing `.ipa`, refer to the [iOS Packaging Guide](https://flet.dev/docs/publish/ios/).
+¡Contribuciones son bienvenidas! Visita nuestro [repositorio en GitHub](https://github.com/jonasreyes/rootqr.git) para reportar issues o enviar pull requests.
 
-### macOS
+---
 
-```
-flet build macos -v
-```
-
-For more details on building macOS package, refer to the [macOS Packaging Guide](https://flet.dev/docs/publish/macos/).
-
-### Linux
-
-```
-flet build linux -v
-```
-
-For more details on building Linux package, refer to the [Linux Packaging Guide](https://flet.dev/docs/publish/linux/).
-
-### Windows
-
-```
-flet build windows -v
-```
-
-For more details on building Windows package, refer to the [Windows Packaging Guide](https://flet.dev/docs/publish/windows/).
+*RootQR - Una herramienta venezolana 100% compatible con Canaima GNU/Linux*
