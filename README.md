@@ -4,17 +4,23 @@
 
 ![Logo de RootQR](src/assets/icon.png)
 
-**RootQR** es una aplicación sencilla pero potente para generar códigos QR personalizados, desarrollada en Python con Flet. Para Canaima GNU/Linux, y cualquier otra distribución.
+**RootQR** es una aplicación desarrollada en Python con Flet para generar códigos QR personalizados, diseñada especialmente para Canaima GNU/Linux.
 
-## ✨ Características principales
+## 📂 Estructura de instalación
 
-- Generación de códigos QR con logotipos incrustrados
-- Personalización básica de colores del QR
-- Interfaz intuitiva y fácil de usar
-- Almacenamiento local de códigos generados
-- Sin spam ni rastreo, sé libre!
+La aplicación se instala en las siguientes ubicaciones:
 
-## 🚀 Instalación en un solo comando:
+| Componente | Ruta |
+|------------|------|
+| **Instalación principal** | `/opt/RootQR/` |
+| **Ejecutable** | `/usr/local/bin/rootqr` |
+| **Acceso directo** | `~/.local/share/applications/RootQR.desktop` |
+| **Configuración** | `~/.config/RootQR/` |
+| **Base de datos** | `/opt/RootQR/src/database/qr_database.db` |
+| **QRs generados** | `/opt/RootQR/src/assets/generated_qrs/` |
+| **Logos/Assets** | `/opt/RootQR/src/assets/` |
+
+## 🚀 Instalación con un solo comando
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/jonasreyes/rootqr/main/install_rootqr.sh | bash
@@ -22,34 +28,36 @@ curl -sSL https://raw.githubusercontent.com/jonasreyes/rootqr/main/install_rootq
 
 ## 🗑️ Desinstalación
 
-Para eliminar RootQR de tu sistema:
-
 ```bash
 curl -sSL https://raw.githubusercontent.com/jonasreyes/rootqr/main/uninstall_rootqr.sh | bash
 ```
 
-## 📦 Estructura del proyecto
+## 💾 Almacenamiento de datos
 
-```
-RootQR/
-├── install_rootqr.sh    # Script de instalación
-├── LICENSE              # Licencia GPLv3
-├── pyproject.toml       # Configuración del proyecto
-├── src/                 # Código fuente
-│   ├── assets/          # Recursos gráficos
-│   ├── database/        # Base de datos SQLite
-│   └── main.py          # Aplicación principal
-└── uninstall_rootqr.sh  # Script de desinstalación
-```
+- **Códigos QR generados**: Se guardan automáticamente en `/opt/RootQR/src/assets/generated_qrs/` con formato `qr_[TIMESTAMP].png`
+- **Historial**: Se almacena en la base de datos SQLite en `/opt/RootQR/src/database/qr_database.db`
+
+## 🖼️ Directorio de assets
+
+| Archivo | Propósito |
+|---------|-----------|
+| `icon.png` | Icono de la aplicación |
+| `splash_android.png` | Imagen de inicio (para futura versión móvil) |
+| `generated_qrs/` | Contiene todos los códigos QR generados |
+
+## 🛠️ Requisitos
+
+- Python 3.8+
+- Canaima GNU/Linux (compatible con otras distros basadas en Debian)
+- Dependencias: `flet`, `qrcode`, `pillow`
 
 ## 📄 Licencia
 
-RootQR se distribuye bajo la **GNU General Public License v3.0**. Consulta el archivo [LICENSE](LICENSE) para más detalles.
-
-## 🤝 Contribuciones
-
-¡Contribuciones son bienvenidas! Visita nuestro [repositorio en GitHub](https://github.com/jonasreyes/rootqr.git) para reportar issues o enviar pull requests.
+Distribuido bajo la **GNU GPLv3**. Ver [LICENSE](LICENSE) para más detalles.
 
 ---
 
-*RootQR - Una herramienta venezolana 100% compatible con Canaima GNU/Linux*
+**Repositorio oficial**: [github.com/jonasreyes/rootqr](https://github.com/jonasreyes/rootqr.git)  
+**Contacto**: [t.me/jonasroot](https://t.me/jonasroot)
+
+*Una herramienta venezolana para la comunidad de software libre*
