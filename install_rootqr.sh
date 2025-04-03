@@ -36,7 +36,7 @@ cd $INSTALL_DIR
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
-pip install --upgrade 'flet[full]' 'qrcode[pil]'
+pip install --upgrade 'flet[desktop-light]' 'qrcode[pil]'
 
 # 4. Crear base de datos
 echo -e "${YELLOW}[+] Inicializando base de datos...${NC}"
