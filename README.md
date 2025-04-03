@@ -1,4 +1,4 @@
-# RootQR - Generador de códigos QR para Canaima GNU/Linux
+# RootQR - Generador de códigos QR 100% compatible con Canaima GNU/Linux
 
 ![Beta Version](https://img.shields.io/badge/version-0.1.0--beta-yellow) ![License](https://img.shields.io/badge/license-GPLv3-blue)
 
