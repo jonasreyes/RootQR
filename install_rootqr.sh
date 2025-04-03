@@ -36,7 +36,7 @@ cd $INSTALL_DIR
 python3 -m venv venv
 source venv/bin/activate
 pip install --upgrade pip
-pip install -e .
+pip install --upgrade 'flet[full]' 'qrcode[pil]'
 
 # 4. Crear base de datos
 echo -e "${YELLOW}[+] Inicializando base de datos...${NC}"
@@ -49,7 +49,7 @@ cat > $WRAPPER_SCRIPT <<EOL
 #!/bin/bash
 cd $INSTALL_DIR
 source venv/bin/activate
-python3 -m src.main
+python3 src/main.py
 EOL
 chmod +x $WRAPPER_SCRIPT
 

@@ -12,14 +12,10 @@
 - Almacenamiento local de códigos generados
 - 100% software libre bajo licencia GPLv3
 
-## 🚀 Instalación
-
-Para instalar RootQR en tu sistema Canaima GNU/Linux:
+## 🚀 Instalación en un solo comando:
 
 ```bash
-wget https://raw.githubusercontent.com/jonasreyes/rootqr/main/install_rootqr.sh
-chmod +x install_rootqr.sh
-./install_rootqr.sh
+curl -sSL https://raw.githubusercontent.com/jonasreyes/rootqr/main/install_rootqr.sh | bash
 ```
 
 ## 🗑️ Desinstalación
@@ -27,9 +23,7 @@ chmod +x install_rootqr.sh
 Para eliminar RootQR de tu sistema:
 
 ```bash
-wget https://raw.githubusercontent.com/jonasreyes/rootqr/main/uninstall_rootqr.sh
-chmod +x uninstall_rootqr.sh
-./uninstall_rootqr.sh
+curl -sSL https://raw.githubusercontent.com/jonasreyes/rootqr/main/uninstall_rootqr.sh | bash
 ```
 
 ## 📦 Estructura del proyecto
