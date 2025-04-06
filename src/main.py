@@ -30,6 +30,7 @@ __status__ = "En desarrollo"
 import flet as ft
 from database import init_db, save_qr, get_all_qrs
 import os
+import subprocess
 from pathlib import Path
 from datetime import datetime
 import qrcode
@@ -75,9 +76,10 @@ def main(page: ft.Page):
         ]
     )
     logo_path = None
+    file_path = None
 
     def generate_qr(e):
-        global logo_path
+        global logo_path, file_path
         if not content_input.value:
             page.open(ft.SnackBar(ft.Text("¡Ingresa un texto o URL!")))
             page.update()
@@ -107,6 +109,8 @@ def main(page: ft.Page):
                     (img.size[1] - logo.size[1]) // 2
                 )
                 img.paste(logo, pos)
+                btn_abrir_capeta.visible = True
+                btn_copiar_portapapeles.visible = True
 
             except Exception as ex:
                 page.open(ft.SnackBar(ft.Text(f"Error al procesar logo: {str(ex)}")))
@@ -119,6 +123,7 @@ def main(page: ft.Page):
         file_path = download_qr(qr_image.src_base64)
         # Guardar en la BD
         save_qr(content_input.value, color_picker.value, logo_path)
+        page.set_clipboard(file_path)
         page.open(ft.SnackBar(ft.Text(f"QR guardado en: /generated_qrs/{os.path.basename(file_path)}")))
         page.update()
 
@@ -130,6 +135,7 @@ def main(page: ft.Page):
             page.update()
 
     def download_qr(qr_image_base64: str) -> str:
+        global file_path
         # Nombre del archivo con timestamp
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         file_name = f"qr_{timestamp}.png"
@@ -142,29 +148,87 @@ def main(page: ft.Page):
 
         return file_path # Por ejemplo: "src/assets/generated_qrs/qr_20250331_143022.png"
 
+    def get_archivo_qr(e):
+        global file_path
+        directorio_path = os.path.dirname(file_path)
+        subprocess.run(["xdg-open", directorio_path])
+
+    def copiar_qr_imagen_al_portapapeles(file_path):
+        try:
+            with open(file_path, "rb") as img_file:
+                subprocess.run(
+                    ["xclip", "-selection", "clipboard", "-t", "image/png", "-i"],
+                    stdin=img_file,
+                    check=True,
+                )
+        except Exception as e:
+            page.open(ft.SnackBar(ft.Text(f"Error al copiar al portapapeles: {e}")))
+            page.update()
+
+    def copiar_ruta_qr(e):
+        global file_path
+        copiar_qr_imagen_al_portapapeles(file_path)
+        page.open(ft.SnackBar(ft.Text("¡QR (imagen) copiado al portapapeles!")))
+
+    btn_abrir_capeta = ft.ElevatedButton("Abrir carpeta", on_click=get_archivo_qr, visible=False)
+    btn_copiar_portapapeles = ft.ElevatedButton("Copiar QR al Portapapeles", on_click=copiar_ruta_qr, visible=False)
+
+    btn_share_qr = ft.Column(
+        [
+            btn_abrir_capeta,
+            btn_copiar_portapapeles
+        ],
+    )
 
     file_picker = ft.FilePicker(on_result=pick_logo)
     page.overlay.append(file_picker)
 
     # Interfáz
+
     page.add(
         ft.Column(
             [
-                ft.Text("Generador de QR", size=24, weight=ft.FontWeight.BOLD, text_align=ft.TextAlign.CENTER,),
-                content_input,
-                color_picker,
-                ft.Row(
-                    [
-                        ft.ElevatedButton("Generar QR", on_click=generate_qr),
-                        ft.ElevatedButton("Seleccionar Logo", on_click=lambda _: file_picker.pick_files()),
-                    ],
-                    alignment = ft.MainAxisAlignment.CENTER,
+                ft.Text(
+                    "Generador de QR",
+                    size=30,
+                    weight=ft.FontWeight.BOLD,
+                    text_align=ft.TextAlign.CENTER
                 ),
-                qr_image,
+                ft.Column(
+                    [
+                        content_input,
+                        ft.Row(
+                            [
+                                color_picker,
+                                ft.ElevatedButton(
+                                    "Seleccionar Logo",
+                                    on_click=lambda _: file_picker.pick_files()
+                                ),
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                            spacing=10,
+                        ),
+                        ft.ElevatedButton(
+                            "Generar QR",
+                            on_click=generate_qr,
+                            width=200
+                        ),
+                        ft.Row(
+                            [
+                                qr_image,
+                                btn_share_qr
+                            ],
+                            alignment=ft.MainAxisAlignment.CENTER,
+                        ),
+                    ],
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    spacing=20,
+                )
             ],
-            spacing=20,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+            spacing=40
         )
     )
+
 
 ft.app(target=main)
