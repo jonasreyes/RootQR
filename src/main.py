@@ -85,7 +85,7 @@ def main(page: ft.Page):
             page.update()
             return
 
-        qr = qrcode.QRCode(version=1, box_size=10, border=4)
+        qr = qrcode.QRCode(version=1, box_size=40, border=5)
         qr.add_data(content_input.value)
         qr.make(fit=True)
         img = qr.make_image(fill_color=color_picker.value, back_color="white")
@@ -123,9 +123,9 @@ def main(page: ft.Page):
         file_path = download_qr(qr_image.src_base64)
         # Guardar en la BD
         save_qr(content_input.value, color_picker.value, logo_path)
-        page.set_clipboard(file_path)
         page.open(ft.SnackBar(ft.Text(f"QR guardado en: /generated_qrs/{os.path.basename(file_path)}")))
         page.update()
+        copiar_ruta_qr(file_path)
 
     def pick_logo(e: ft.FilePickerResultEvent):
         global logo_path
