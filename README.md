@@ -42,7 +42,7 @@
 Ejecuta este comando en tu terminal:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/jonasreyes/rootqr/main/scripts/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/jonasreyes/rootqr/main/scripts/rootqr_install.sh | bash
 ```
 
 ### Instalación Manual
