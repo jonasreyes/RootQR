@@ -85,7 +85,13 @@ def main(page: ft.Page):
             page.update()
             return
 
-        qr = qrcode.QRCode(version=1, box_size=40, border=5)
+        qr = qrcode.QRCode(
+                version=1, 
+                error_correction=qrcode.constants.ERROR_CORRECT_H,
+                box_size=10,    # Tamaño de cada cuadrito (pixeles)
+                border=4,       # Tamaño del borde blanco (en cuadritos)
+                )
+
         qr.add_data(content_input.value)
         qr.make(fit=True)
         img = qr.make_image(fill_color=color_picker.value, back_color="white")
